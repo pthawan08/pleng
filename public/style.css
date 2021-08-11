@@ -1,0 +1,64 @@
+body {
+  margin: 20px
+}
+
+/* button {
+  display: none;
+  width: 100%;
+  padding: 8px 0;
+  margin: 8px auto;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+} */
+
+p {
+  border-bottom: 1px dashed #ddd
+}
+
+#pictureUrl {
+  margin: 0 auto;
+  width: 32%;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  box-align: center;
+  -moz-border-radius: 256px;
+  -webkit-border-radius: 256px;
+  border-radius: 256px;
+}
+
+#accessToken, #utouId {
+  display: block;
+  overflow: auto
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+ul {
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+span {
+  display: block;
+}
+
+span:nth-child(1) {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+span:nth-child(2) {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
