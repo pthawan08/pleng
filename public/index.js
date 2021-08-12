@@ -3,7 +3,8 @@ let profile;
 async function main() {
   await liff.init({ liffId: "1656049054-rOwXLowg" });
   if (liff.isLoggedIn()) {
-    getUserProfile();
+    await getUserProfile();
+    checkUserSubmission();
   } else {
     liff.login();
   }
@@ -17,6 +18,7 @@ async function getUserProfile() {
   document.getElementById("statusMessage").append(profile.statusMessage)
   /* document.getElementById("userId").append(profile.userId) */
   document.getElementById("TB_userId").value = profile.userId;
+  return profile;
 }
 
 function logOut() {
@@ -52,17 +54,20 @@ function showBody(){
   document.querySelector("body").style.display = "block"
 }
 
-db.collection("user")
-  .where("userid","==",profile.userId)
-  .get()
-  .then((user) => {
-    if(!user.empty)  {
-      window.location.replace("thankyou.html");
-      return;
-    }
+
+function checkUserSubmission(){
+  db.collection("user")
+    .where("userid","==", profile && profile.userId)
+    .get()
+    .then(user => {
+      if(!user.empty)  {
+        window.location.replace("thankyou.html");
+        return;
+     }
     showBody();
     renderUser(doc);
   });
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -78,7 +83,7 @@ form.addEventListener("submit", (e) => {
       form.weight.value = "";
       form.height.value = "";
       form.userid.value = "";
-      
+      window.location.replace("thankyou.html");
     })
     .catch((err) => {
       console.error(err);
