@@ -13,13 +13,14 @@ async function main() {
     document.getElementById("pictureUrl").src = profile.pictureUrl
     /* document.getElementById("displayName").append(profile.displayName)
     document.getElementById("statusMessage").append(profile.statusMessage)
-    document.getElementById("userId").append(profile.userId) */
+    /* document.getElementById("userId").append(profile.userId) */ 
     document.getElementById('TB_userId').value = profile.userId;
     }
   
   function logOut() {
     liff.logout()
     window.location.reload()
+    window.location.replace("thankyou.html");
   }
   
   let userList = document.querySelector('#userList');
