@@ -1,6 +1,7 @@
 body {
   margin: 20px
   
+  
 }
 
 /* button {
@@ -63,4 +64,14 @@ span:nth-child(1) {
 span:nth-child(2) {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+div {
+  border: 3px dashed #f08080;
+  background-color: #FFFFE0;
+}
+pl {
+  background-image: url('ex2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }

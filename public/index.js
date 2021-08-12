@@ -1,3 +1,5 @@
+let profile;
+
 async function main() {
   await liff.init({ liffId: "1656049054-rOwXLowg" });
   if (liff.isLoggedIn()) {
@@ -9,7 +11,7 @@ async function main() {
 main();
 
 async function getUserProfile() {
-  const profile = await liff.getProfile();
+  profile = await liff.getProfile();
   document.getElementById("pictureUrl").src = profile.pictureUrl;
   /* document.getElementById("displayName").append(profile.displayName)
   document.getElementById("statusMessage").append(profile.statusMessage)
@@ -46,13 +48,20 @@ function renderUser(doc) {
   userList.appendChild(li);
 }
 
+function showBody(){
+  document.querySelector("body").style.display = "block"
+}
+
 db.collection("user")
+  .where("userid","==",profile.userId)
   .get()
   .then((user) => {
-    user.docs.forEach((doc) => {
-      console.log(doc.data());
-      renderUser(doc);
-    });
+    if(!user.empty)  {
+      window.location.replace("thankyou.html");
+      return;
+    }
+    showBody();
+    renderUser(doc);
   });
 
 form.addEventListener("submit", (e) => {
@@ -69,7 +78,7 @@ form.addEventListener("submit", (e) => {
       form.weight.value = "";
       form.height.value = "";
       form.userid.value = "";
-      window.location.replace("thankyou.html");
+      
     })
     .catch((err) => {
       console.error(err);
